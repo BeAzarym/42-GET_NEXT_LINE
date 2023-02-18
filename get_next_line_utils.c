@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 19:59:18 by cchabeau          #+#    #+#             */
-/*   Updated: 2023/02/15 22:45:08 by cchabeau         ###   ########.fr       */
+/*   Updated: 2023/02/18 12:58:04 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,21 @@ char	*ft_strjoin(char *s1, char *s2)
 	*str = '\0';
 	free (s1 - len_s1);
 	return (str - len_str);	
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	i;
+	size_t	len;
+
+	len = ft_strlen(src);
+	i = -1;
+	while (src[++i] != '\0' && dstsize > 1)
+	{
+		dst[i] = src[i];
+		dstsize--;
+	}
+	if (dstsize != 0)
+		dst[i] = '\0';
+	return (len);
 }
