@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 19:59:13 by cchabeau          #+#    #+#             */
-/*   Updated: 2023/02/23 13:51:04 by cchabeau         ###   ########.fr       */
+/*   Created: 2023/02/23 14:06:41 by cchabeau          #+#    #+#             */
+/*   Updated: 2023/02/23 14:19:54 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static int	check_endline(char *str)
 {
@@ -59,18 +59,18 @@ static char	*get_line(char *line, char *buffer, int *check_newline, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[BUFFER_SIZE + 1];
+	static char	buffer[FOPEN_MAX][BUFFER_SIZE + 1];
 	char		*line;
 	int			check_newline;
 
 	if ((fd < 0 || fd >= FOPEN_MAX) || BUFFER_SIZE <= 0)
 		return (NULL);
 	check_newline = -1;
-	line = ft_strdup(buffer, &check_newline);
+	line = ft_strdup(buffer[fd], &check_newline);
 	if (!line)
 		return (NULL);
-	ft_strlcpy(buffer, &buffer[check_newline + 1], BUFFER_SIZE + 1);
-	line = get_line(line, buffer, &check_newline, fd);
+	ft_strlcpy(buffer[fd], &buffer[fd][check_newline + 1], BUFFER_SIZE + 1);
+	line = get_line(line, buffer[fd], &check_newline, fd);
 	if (!line || line[0] == '\0')
 	{
 		free(line);

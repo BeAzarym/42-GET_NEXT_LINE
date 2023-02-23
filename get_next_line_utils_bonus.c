@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 19:59:18 by cchabeau          #+#    #+#             */
-/*   Updated: 2023/02/23 13:51:51 by cchabeau         ###   ########.fr       */
+/*   Created: 2023/02/23 14:06:31 by cchabeau          #+#    #+#             */
+/*   Updated: 2023/02/23 14:20:04 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static int	ft_strlen(char *str)
 {
